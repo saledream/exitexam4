@@ -1,0 +1,20 @@
+{% load imagefit %} 
+{% for crs,progress in courses %}
+   <div class="card1 col-lg-3 col-12 mx-2 col-md-5 my-3 position-relative" style="width: 18rem;" hx-get="fetch/courses/{{crs.id}}/" hx-trigger="click" hx-target="#submain">
+      <img src="{{ crs.image.url }}"  class="rounded bg-image hover-zoom img-fluid mx-auto" alt="{{crs.name}}">
+       <div class="card-body">
+         <p class="card-text">{{crs.name}}</p>
+         <div>
+            <span>{{crs.modules.all.count}} modules </span> 
+            <span> {{crs.tests.all.count}} model exams </span>
+         </div>
+         <span> Instructor</span> <spna> {{crs.instructor.username}}</spna>
+       </div>
+       <div class="progress position-relative rounded">
+       <div class="progress-bar bg-success" role="progressbar" style="width: {{progress}}%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100">{{progress}}%</div>
+     </div>
+   </div>
+{% endfor %}
+
+
+

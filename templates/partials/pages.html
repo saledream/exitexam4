@@ -1,0 +1,23 @@
+
+        <div class="note col-12 col-sm-12 col-lg-9">
+            <div class="container">
+                 <h1 class="font-weight-bold"> {{module.name}}</h1>
+            </div>
+            <div class="scrollable">
+               <p class="card-title"> Module summary</p> 
+               <hr class="bg-white">
+               <div class="card-body">
+                   <p class="card-text">{{module.overview|safe}}</p>
+               </div>
+            </div>
+       </div>
+   
+       <div class="pages col-sm-12 col-lg-3">
+           {% for page in module.pages.all %} 
+             <ul>
+                <li hx-get="fetch/pages/{{page.id}}/" hx-trigger="click" hx-target=".note">{{page.title}}</li> 
+             </ul>
+           {% empty %}
+              <span> No page </span>
+           {% endfor %}
+       </div>
